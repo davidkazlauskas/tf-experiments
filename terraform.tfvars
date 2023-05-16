@@ -1,6 +1,6 @@
-region = "us-east-2"
+region = "us-east-1"
 
-availability_zones = ["us-east-2a", "us-east-2b"]
+availability_zones = ["us-east-1a", "us-east-1b"]
 
 all_vpc_cidr = "10.16.0.0/15"
 main_vpc_cidr = "10.16.0.0/16"
