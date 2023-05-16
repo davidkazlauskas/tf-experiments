@@ -1,10 +1,12 @@
 #!/bin/sh
 
-# required installs beforehand:
+# required software beforehand:
 # - terraform
 # - docker
 # - zip
 # - aws cli
+# - golang
+# - makefile
 
 terraform init
 
