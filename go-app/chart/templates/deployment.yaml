@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.instanceName }}
+  labels:
+    app: {{ .Values.instanceName }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Values.instanceName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.instanceName }}
+    spec:
+      containers:
+      - name: poller
+        image: "{{ .Values.image.repository }}:{{ .Values.image.version }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        {{ if .Values.pollUrl }}
+        env:
+        - name: POLL_URL
+          value: {{ .Values.pollUrl }}
+        {{ end }}
+        ports:
+        - containerPort: 5000
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 5000
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 5000
+        resources:
+          {{- toYaml .Values.resources | nindent 12 }}

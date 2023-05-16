@@ -1,0 +1,32 @@
+replicaCount: 2
+
+instanceName: service0
+
+image:
+  repository: kdavid/gopoller
+  version: v1.0.0
+  pullPolicy: IfNotPresent
+
+securityContext: {}
+
+ingress: true
+
+service:
+  type: NodePort
+  nodePort: 30701
+
+resources:
+   limits:
+     cpu: 100m
+     memory: 128Mi
+   requests:
+     cpu: 100m
+     memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+pollUrl: http://service1/test

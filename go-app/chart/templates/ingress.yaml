@@ -1,0 +1,21 @@
+{{ if .Values.ingress }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Values.instanceName }}
+  namespace: default
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /test
+            pathType: Exact
+            backend:
+              service:
+                name: {{ .Values.instanceName }}
+                port:
+                  number: 80
+{{ end }}

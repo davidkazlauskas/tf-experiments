@@ -1,0 +1,6 @@
+#!/bin/sh
+
+terraform apply -target module.eks_cluster -auto-approve
+terraform apply -target module.lambda_subnets -auto-approve
+terraform apply -replace=null_resource.lambda_packaging -auto-approve
+terraform apply -auto-approve

@@ -1,0 +1,27 @@
+replicaCount: 2
+
+instanceName: service1
+
+image:
+  repository: kdavid/gopoller
+  pullPolicy: IfNotPresent
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+   limits:
+     cpu: 100m
+     memory: 128Mi
+   requests:
+     cpu: 100m
+     memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
