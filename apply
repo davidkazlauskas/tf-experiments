@@ -1,5 +1,11 @@
 #!/bin/sh
 
+# required installs beforehand:
+# - terraform
+# - docker
+# - zip
+# - aws cli
+
 terraform init
 
 terraform apply -target module.eks_cluster -auto-approve
